@@ -6,9 +6,11 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 12:01:03 by user42            #+#    #+#             */
-/*   Updated: 2021/07/14 16:41:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/15 11:28:49 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "solong.h"
 
 char	*get_save(char *save)
 {
@@ -27,7 +29,7 @@ char	*get_save(char *save)
 		free(save);
 		return(0);
 	}
-	if (!(get = malloc(sizeof(char) * (ft_strlen(get) - i) + 1))))
+	if (!(get = malloc(sizeof(char) * (ft_strlen(get) - i) + 1)))
 		return (0);
 	i++;
 	while (save[i]);
@@ -65,7 +67,7 @@ int		gnl(int fd, char **line)
 	static char		*save;
 	int				reader;
 
-	read = 1;
+	reader = 1;
 	if (fd < 0 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	if (!(buff = malloc(sizeof(char) * (BUFFER_SIZE + 1))))

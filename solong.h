@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/07/10 11:00:57 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/15 11:59:45 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ KEY
 */
 
 /*
+DEFINE
+*/
+#define BUFFER_SIZE 8
+/*
 STRUCTURE
 */
 typedef struct s_coord
@@ -45,5 +49,13 @@ typedef struct s_pos
 /*
 FUNCTION
 */
+size_t		ft_strlen(const char *s);
+void		*ft_memmove(void *dest, const void *src, size_t len);
+char		*str_join(char const *s1, char const *s2);
+int			has_ret(char *str);
+char		*get_save(char *save);
+char		*get_line(char *str);
+int			gnl(int fd, char **line);
+
 
 #endif
