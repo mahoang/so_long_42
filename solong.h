@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solong.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/07/15 11:59:45 by user42           ###   ########.fr       */
+/*   Updated: 2021/07/24 17:28:10 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ LIBRARIES
 # include <unistd.h>
 # include <string.h>
 # include "./mlx/mlx.h"
+# include "./GNL/get_next_line.h"
 
 /*
 KEY
@@ -35,6 +36,15 @@ DEFINE
 /*
 STRUCTURE
 */
+
+/*struct check map*/
+typedef struct s_map
+{
+	int		lines;
+	int		cor_lines;
+	int		col_max;
+}				t_map;
+
 typedef struct s_coord
 {
 	float	x;
