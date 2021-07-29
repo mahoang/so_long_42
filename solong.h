@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/07/24 17:28:10 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 11:41:56 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,15 @@ STRUCTURE
 typedef struct s_map
 {
 	int		lines;
-	int		cor_lines;
 	int		col_max;
+	int		collectiblex;
+	int		collectibley;
+	int		exitx;
+	int		exity;
+	int		playerx;
+	int		playery;
 }				t_map;
 
-typedef struct s_coord
-{
-	float	x;
-	float	y;
-}				t_coord;
-
-typedef struct s_pos
-{
-	int		x;
-	int		y;
-}				t_pos;
 /*
 FUNCTION
 */
@@ -66,6 +60,7 @@ int			has_ret(char *str);
 char		*get_save(char *save);
 char		*get_line(char *str);
 int			gnl(int fd, char **line);
-
+int	ft_parsing(char *file, char ***map);
+int is_error(char *str);
 
 #endif

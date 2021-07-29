@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/28 18:54:48 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 11:37:06 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,29 +50,29 @@ int check_rectangle(char **line, t_map *map)
 **return 1 if if it does
 **return - if it's not
 */
-int check_walls(char **line)
+int check_walls(char **map)
 {
 	int i = 0;
 	int j = 0;
 
-	while (line[i++][j] == '1')
+	while (map[i++][j] == '1')
 	{
-		if (line[i][j] != '1')
+		if (map[i][j] != '1')
 			return (0);
 	}
-	while (line[i][j++])
+	while (map[i][j++])
 	{
-		if (line[i][j] != '1')
+		if (map[i][j] != '1')
 			return (0);
 	}
-	while (line[i--][j])
+	while (map[i--][j])
 	{
-		if (line[i][j] != '1')
+		if (map[i][j] != '1')
 			return (0);
 	}
-	while (line[i][j--])
+	while (map[i][j--])
 	{
-		if (line[i][j] != '1')
+		if (map[i][j] != '1')
 			return (0);
 	}
 	return (1);
@@ -84,7 +84,7 @@ int check_walls(char **line)
 **return - if not
 ** TODO voir pour le cas ou il y a plusieurs collectibles
 */
-int check_collectible(char **line, t_map *map)
+int check_collectible( t_map *map, char **line)
 {
 	int i;
 	int j;
@@ -115,7 +115,7 @@ int check_collectible(char **line, t_map *map)
 **return 1 and coordinate if do
 **return 0 if not
 */
-int check_exit(char **line, t_map *map)
+int check_exit(t_map *map,char **line)
 {
 	int i;
 	int j;
@@ -146,7 +146,7 @@ int check_exit(char **line, t_map *map)
 **return 1 and coordinate if do
 **return 0 if not
 */
-int check_player(char **line, t_map *map)
+int check_player(t_map *map,char **line)
 {
 	int i;
 	int j;
@@ -171,3 +171,19 @@ int check_player(char **line, t_map *map)
 	return (0);
 }
 
+int	ft_parsing(char *file, char ***map)
+{
+	if (get_file(file, map) == -1)
+		return (-1);
+	if (check_rectangle(file, map) == 0)
+		return (0);
+	if (check_walls(map) == 0)
+		return (0);
+	if (check_collectible(file, map) == 0)
+		return (0);
+	if (check_exit(file, map) == 0)
+		return (0);
+	if (check_player(file, map) == 0)
+		return (0);
+	return (1);
+}

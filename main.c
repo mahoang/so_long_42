@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/24 17:47:08 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 11:41:38 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,25 +49,16 @@ int is_error(char *str)
 int	main(int ac, char *av[])
 {
 	int	fd;
-	int	isval;
-	int	i;
-	char	*line;
+	char	**map;
 
-	i = 1;
-	if (av != 2)
+	if (ac != 2)
 		return (is_error("wrong number of arguments"));
 	if (ft_extension(av[1]))
 		return (is_error("extension not valid"));
 	fd= open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (is_error("map couldn't open"));
-	while (i > 0)
-	{
-		i = get_next_line(fd,&line);
-		if (i != 0)
-			isval = imputdata;
-		free(line);
-	}
+	ft_parsing(av[1], &map);
 	close(fd);
 	return (1);
 }
