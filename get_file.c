@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/29 11:13:15 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/29 11:22:02 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:01:48 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_gnl_recurs(int fd, char **line, int index)
 
 	ret = read(fd, &buf, 1);
 	if (ret == -1)
-		return (ft_error("Le fichier n'existe pas"));
+		return (is_error("Le fichier n'existe pas"));
 	if (ret == 1 && buf != '\n')
 	{
 		if (ft_gnl_recurs(fd, line, index + 1) == -1)
@@ -30,7 +30,7 @@ static int	ft_gnl_recurs(int fd, char **line, int index)
 	{
 		*line = (char *)malloc(sizeof(char) * (index + 1));
 		if (!(*line))
-			return (ft_error("Malloc line error"));
+			return (is_error("Malloc line error"));
 		(*line)[index] = '\0';
 	}
 	return (ret);

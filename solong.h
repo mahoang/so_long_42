@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/07/29 11:41:56 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 13:21:06 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ KEY
 /*
 DEFINE
 */
-#define BUFFER_SIZE 8
 /*
 STRUCTURE
 */
@@ -40,8 +39,8 @@ STRUCTURE
 /*struct check map*/
 typedef struct s_map
 {
-	int		lines;
-	int		col_max;
+	size_t		lines;
+	size_t		col_max;
 	int		collectiblex;
 	int		collectibley;
 	int		exitx;
@@ -62,5 +61,6 @@ char		*get_line(char *str);
 int			gnl(int fd, char **line);
 int	ft_parsing(char *file, char ***map);
 int is_error(char *str);
+int	get_file(char *file, char ***map);
 
 #endif

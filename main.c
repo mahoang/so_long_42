@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/29 11:41:38 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 14:22:22 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ size_t		ft_strlen(const char *s)
 	int i;
 
 	i = 0;
-	if (!s)
-		return (0);
 	while (s[i] != '\0')
 		i++;
 	return (i);
@@ -50,6 +48,7 @@ int	main(int ac, char *av[])
 {
 	int	fd;
 	char	**map;
+	int ret;
 
 	if (ac != 2)
 		return (is_error("wrong number of arguments"));
@@ -58,7 +57,8 @@ int	main(int ac, char *av[])
 	fd= open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (is_error("map couldn't open"));
-	ft_parsing(av[1], &map);
+	ret = ft_parsing(av[1], &map);
+	printf("%i",ret);
 	close(fd);
 	return (1);
 }
