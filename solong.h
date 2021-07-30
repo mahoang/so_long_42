@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/07/29 13:21:06 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 16:40:23 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,12 @@ STRUCTURE
 /*struct check map*/
 typedef struct s_map
 {
-	size_t		lines;
-	size_t		col_max;
+	size_t		ymax;//lines
+	size_t		xmax;//col_max
 	int		collectiblex;
 	int		collectibley;
+	char		*multicollx;
+	char		*multicolly;
 	int		exitx;
 	int		exity;
 	int		playerx;

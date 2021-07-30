@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/29 14:32:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 16:44:02 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@
 **check if map is rectangular
 **if rectangular return 1
 **if not return 0
+** TODO recuperer
 */
-int check_rectangle(t_map *map,char **line)
+int check_rectangle(t_map *map_metadata,char **line)
 {
 	size_t i;
 	int j;
@@ -35,20 +36,21 @@ int check_rectangle(t_map *map,char **line)
 
 	while (line[i][j])
 		j++;
-	map->col_max = j;
+	map_metadata->xmax = j;
 	//printf("col max%zu\n", map->col_max);
 	j = 0;
 	while (line[i] != NULL)
 	{
 		//printf("coucou\n");
-		printf("i %zu\n", i);
-		printf("strlen %zu\n", ft_strlen(line[i]));
-		if(map->col_max != ft_strlen(line[i]))
+		//printf("i %zu\n", i);
+		//printf("strlen %zu\n", ft_strlen(line[i]));
+		if(map_metadata->xmax != ft_strlen(line[i]))
 			return (0);
 		i++;
-		printf("--------------\n");
+		//printf("--------------\n");
 	}
-	printf("******************\n");
+	map_metadata->ymax = i;
+	//printf("******************\n");
 	return (1);
 }
 
@@ -56,33 +58,39 @@ int check_rectangle(t_map *map,char **line)
 **check if surrounded by walls
 **return 1 if if it does
 **return - if it's not
+** in order West/South/East/North
 */
-int check_walls(char **map)
+int check_walls(char **map, t_map *map_metadata )
 {
-	int i = 0;
-	int j = 0;
-	printf("eeeeeee\n");
-	while (map[i++][j] == '1')
+	unsigned int i;
+	unsigned int j;
+
+	i = 0;
+	j = 0;
+	while (i < map_metadata->ymax -1)
 	{
 		if (map[i][j] != '1')
 			return (0);
+		i++;
 	}
-	while (map[i][j++])
+	while (j < map_metadata->xmax -1)
 	{
 		if (map[i][j] != '1')
 			return (0);
+		j++;
 	}
-	while (map[i--][j])
+	while (i > 0)
 	{
 		if (map[i][j] != '1')
 			return (0);
+		i--;
 	}
-	while (map[i][j--])
+	while (j > 0)
 	{
 		if (map[i][j] != '1')
 			return (0);
+		j--;
 	}
-	printf("dddddddddd/n");
 	return (1);
 }
 
@@ -104,20 +112,56 @@ int check_collectible( t_map *map, char **line)
 	{
 		while (line[i][j])
 		{
-			j++;
 			if (line[i][j] == 'C')
 			{
 				map->collectiblex = j;
 				map->collectibley = i;
 				return (1);
 			}
+			j++;
 		}
 		j = 1;
 		i++;
 	}
 	return (0);
 }
+/*
+int check_multi_collectible( t_map *map, char **line)
+{
+	int i;
+	int j;
+	int x;
+	int y;
 
+
+	i = 0;
+	j = 0;
+	x = 0;
+	y = 0;
+	printf("\n-----\n");
+	printf("%c coll", map->multicollx[0]);
+
+	while (line[i])
+	{
+		while (line[i][j])
+		{
+			if (line[i][j] == 'C')
+			{
+				map->multicollx[x] = j;
+				map->multicolly[y] = i;
+				x++;
+				y++;
+				return (1);
+			}
+			j++;
+		}
+		j = 1;
+		i++;
+	}
+	printf("\n-----\n");
+	return (0);
+}
+*/
 /*
 **check if exit exist
 **return 1 and coordinate if do
@@ -134,13 +178,13 @@ int check_exit(t_map *map,char **line)
 	{
 		while (line[i][j])
 		{
-			j++;
 			if (line[i][j] == 'E')
 			{
 				map->exitx = j;
 				map->exity = i;
 				return (1);
 			}
+			j++;
 		}
 		j = 1;
 		i++;
@@ -159,23 +203,24 @@ int check_player(t_map *map,char **line)
 	int i;
 	int j;
 
-	i = 1;
-	j = 1;
+	i = 0;
+	j = 0;
 	while (line[i])
 	{
 		while (line[i][j])
 		{
-			j++;
 			if (line[i][j] == 'P')
 			{
 				map->playerx = j;
 				map->playery = i;
 				return (1);
 			}
+			j++;
 		}
 		j = 1;
 		i++;
 	}
+	printf("\n-------\n");
 	return (0);
 }
 
@@ -201,30 +246,34 @@ int testprint(char **map)
 }
 void	init_struct()
 {
-	t_map struc;
-	struc.lines = 0;
-	struc.col_max = 0;
-	struc.collectiblex = 0;
-	struc. collectibley = 0;
+	t_map map_metadata;
+	map_metadata.ymax = 0;
+	map_metadata.xmax = 0;
+	map_metadata.collectiblex = 0;
+	map_metadata.collectibley = 0;
+	//map_metadata.multicollx = 0;
+	//map_metadata.multicolly = 0;
+	map_metadata.exitx = 0;
+	map_metadata.exity = 0;
+	map_metadata.playerx = 0;
+	map_metadata.playery = 0;
 }
 int	ft_parsing(char *file, char ***map)
 {
-	t_map struc;
+	t_map map_metadata;
 	init_struct();
 	if (get_file(file, map) == -1)
 		return (-1);
 	testprint(*map);
-	if (check_rectangle(&struc, *map) == 0)
+	if (check_rectangle(&map_metadata, *map) == 0)
 		return (3);
-	if (check_walls(*map) == 0)
+	if (check_walls(*map, &map_metadata) == 0)
 		return (4);
-	if (check_collectible(&struc, *map) == 0)
+	if (check_collectible(&map_metadata, *map) == 0)
 		return (5);
-	if (check_exit(&struc, *map) == 0)
+	if (check_exit(&map_metadata, *map) == 0)
 		return (6);
-	if (check_player(&struc, *map) == 0)
+	if (check_player(&map_metadata, *map) == 0)
 		return (7);
-	printf("col_max %zu", struc.col_max);
-	printf("\n1");
 	return (1);
 }

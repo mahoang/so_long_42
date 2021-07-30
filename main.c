@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/29 14:22:22 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/07/29 16:44:16 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	init_mapstruct(t_map *map)
 {
-	map->lines = 0;
-	map->col_max = 0;
+	map->ymax = 0;
+	map->xmax = 0;
 }
 
 size_t		ft_strlen(const char *s)
@@ -58,7 +58,7 @@ int	main(int ac, char *av[])
 	if (fd < 0)
 		return (is_error("map couldn't open"));
 	ret = ft_parsing(av[1], &map);
-	printf("%i",ret);
+	//printf("\nreturn %i\n",ret);
 	close(fd);
 	return (1);
 }
