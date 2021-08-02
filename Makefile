@@ -1,36 +1,40 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
+#    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/10 10:30:52 by user42            #+#    #+#              #
-#    Updated: 2021/07/30 12:36:57 by zephyrus         ###   ########.fr        #
+#    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
+#    Updated: 2021/08/02 14:50:52 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME = so_long
+HEADER = solong.h
+SRC = check_map.c get_file.c main.c
+LIB = -lmlx_Linux -lmlx -lXext -lm -lX11 -lbsd
+INC = -I . -I ./mlx -I ./includes
+OPTION = -L ./mlx
+OBJ = $(SRC:.c=.o)
 
-PATH_MLX	= ./mlx
-SRCS		= check_map.c main.c\
-				
-CC			= clang -fsanitize=address -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz
-CFLAGS		= -Wall -Wextra -Werror
-RM			= rm -f
-NAME		= so_long
-OBJS	= ${SRCS:.c=.o}
+CC = clang
+FLAGS = -Wall -Wextra -Werror -o3
 
-%.o: %.c
-	$(CC) ${CFLAGS} -I/usr/include ${PATH_MLX} -O3 -c $< -o $@
+all : $(NAME)
 
-all:		 ${NAME}
-${NAME} : ${OBJ}
-		${CC} ${CFLAGS} -o ${SRCS}
-clean:
-fclean:		clean
+%.o : %.c
+	$(CC) $(FLAGS) -o $@ -c $< -I $(HEADER) -I/mlx
 
-re:			fclean all
+$(NAME) : $(OBJ) $(HEADER)
+	$(CC) $(FLAGS) $(OBJ) $(LIB) $(INC) $(OPTION) -o $(NAME)
 
-.PHONY:		all clean fclean re
-#$(NAME): $(OBJ)
-#	$(CC) -Lmlx_linux -lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+clean :
+	@rm -rf $(OBJ)
+
+fclean :	clean
+	rm -rf $(NAME)
+
+re : fclean all
+
+.PHONY : clean fclean re all
