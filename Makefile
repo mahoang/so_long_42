@@ -1,18 +1,18 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
-#    Updated: 2021/08/02 14:50:52 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/08/04 16:09:49 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 HEADER = solong.h
-SRC = check_map.c get_file.c main.c
+SRC = check_map.c get_file.c utils.c mlx.c main.c
 LIB = -lmlx_Linux -lmlx -lXext -lm -lX11 -lbsd
 INC = -I . -I ./mlx -I ./includes
 OPTION = -L ./mlx

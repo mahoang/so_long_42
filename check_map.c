@@ -6,19 +6,11 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/07/29 16:44:02 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/04 16:13:58 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "solong.h"
-
-
-/*
-*TODO faire un main avec scanf ou en dur dans un main pour tester
-* voir readline/getline
-*dans le test print le tableau et le resultat
-*
-*/
 
 /*
 **check if map is rectangular
@@ -69,25 +61,25 @@ int check_walls(char **map, t_map *map_metadata )
 	j = 0;
 	while (i < map_metadata->ymax -1)
 	{
-		if (map[i][j] != '1')
+		if (map[i][j] != CHAR_WALL)
 			return (0);
 		i++;
 	}
 	while (j < map_metadata->xmax -1)
 	{
-		if (map[i][j] != '1')
+		if (map[i][j] != CHAR_WALL)
 			return (0);
 		j++;
 	}
 	while (i > 0)
 	{
-		if (map[i][j] != '1')
+		if (map[i][j] != CHAR_WALL)
 			return (0);
 		i--;
 	}
 	while (j > 0)
 	{
-		if (map[i][j] != '1')
+		if (map[i][j] != CHAR_WALL)
 			return (0);
 		j--;
 	}
@@ -112,7 +104,7 @@ int check_collectible( t_map *map, char **line)
 	{
 		while (line[i][j])
 		{
-			if (line[i][j] == 'C')
+			if (line[i][j] == CHAR_COLLECT)
 			{
 				map->collectiblex = j;
 				map->collectibley = i;
@@ -178,7 +170,7 @@ int check_exit(t_map *map,char **line)
 	{
 		while (line[i][j])
 		{
-			if (line[i][j] == 'E')
+			if (line[i][j] == CHAR_EXIT)
 			{
 				map->exitx = j;
 				map->exity = i;
@@ -209,7 +201,7 @@ int check_player(t_map *map,char **line)
 	{
 		while (line[i][j])
 		{
-			if (line[i][j] == 'P')
+			if (line[i][j] == CHAR_PC)
 			{
 				map->playerx = j;
 				map->playery = i;
@@ -220,7 +212,7 @@ int check_player(t_map *map,char **line)
 		j = 1;
 		i++;
 	}
-	printf("\n-------\n");
+	//printf("\n-------\n");
 	return (0);
 }
 
@@ -264,7 +256,7 @@ int	ft_parsing(char *file, char ***map)
 	init_struct();
 	if (get_file(file, map) == -1)
 		return (-1);
-	testprint(*map);
+	//testprint(*map);
 	if (check_rectangle(&map_metadata, *map) == 0)
 		return (3);
 	if (check_walls(*map, &map_metadata) == 0)
