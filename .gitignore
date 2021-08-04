@@ -1,0 +1,5 @@
+*.o
+a.out
+Makefile2
+GNL/*
+so_long
