@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/04 16:13:58 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/05 16:09:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@
 **check if map is rectangular
 **if rectangular return 1
 **if not return 0
-** TODO recuperer
 */
-int check_rectangle(t_map *map_metadata,char **line)
+int check_rectangle(t_map *map_data,char **line)
 {
 	size_t i;
 	int j;
@@ -28,20 +27,19 @@ int check_rectangle(t_map *map_metadata,char **line)
 
 	while (line[i][j])
 		j++;
-	map_metadata->xmax = j;
-	//printf("col max%zu\n", map->col_max);
+	map_data->xmax = j;
+	//printf("col max%zu\n", map_data->xmax);
 	j = 0;
 	while (line[i] != NULL)
 	{
-		//printf("coucou\n");
 		//printf("i %zu\n", i);
 		//printf("strlen %zu\n", ft_strlen(line[i]));
-		if(map_metadata->xmax != ft_strlen(line[i]))
+		if(map_data->xmax != ft_strlen(line[i]))
 			return (0);
 		i++;
 		//printf("--------------\n");
 	}
-	map_metadata->ymax = i;
+	map_data->ymax = i;
 	//printf("******************\n");
 	return (1);
 }
@@ -52,20 +50,20 @@ int check_rectangle(t_map *map_metadata,char **line)
 **return - if it's not
 ** in order West/South/East/North
 */
-int check_walls(char **map, t_map *map_metadata )
+int check_walls(char **map, t_map *map_data )
 {
 	unsigned int i;
 	unsigned int j;
 
 	i = 0;
 	j = 0;
-	while (i < map_metadata->ymax -1)
+	while (i < map_data->ymax -1)
 	{
 		if (map[i][j] != CHAR_WALL)
 			return (0);
 		i++;
 	}
-	while (j < map_metadata->xmax -1)
+	while (j < map_data->xmax -1)
 	{
 		if (map[i][j] != CHAR_WALL)
 			return (0);
@@ -236,36 +234,39 @@ int testprint(char **map)
 	printf("adresse %p", map[i]);
 	return (0);
 }
-void	init_struct()
+t_map	init_struct()
 {
-	t_map map_metadata;
-	map_metadata.ymax = 0;
-	map_metadata.xmax = 0;
-	map_metadata.collectiblex = 0;
-	map_metadata.collectibley = 0;
-	//map_metadata.multicollx = 0;
-	//map_metadata.multicolly = 0;
-	map_metadata.exitx = 0;
-	map_metadata.exity = 0;
-	map_metadata.playerx = 0;
-	map_metadata.playery = 0;
+	t_map map_data;
+	map_data.ymax = 0;
+	map_data.xmax = 0;
+	map_data.collectiblex = 0;
+	map_data.collectibley = 0;
+	//map_data.multicollx = 0;
+	//map_data.multicolly = 0;
+	map_data.exitx = 0;
+	map_data.exity = 0;
+	map_data.playerx = 0;
+	map_data.playery = 0;
+	return (map_data);
 }
-int	ft_parsing(char *file, char ***map)
+int	ft_parsing(char *file, char ***map, t_map *map_data)
 {
-	t_map map_metadata;
-	init_struct();
 	if (get_file(file, map) == -1)
 		return (-1);
 	//testprint(*map);
-	if (check_rectangle(&map_metadata, *map) == 0)
+	//printf("\nmapdata ymax--%zu", map_data.xmax);
+	if (check_rectangle(map_data, *map) == 0)
 		return (3);
-	if (check_walls(*map, &map_metadata) == 0)
+	//printf("\nmapdata xmax--++%zu", map_data->xmax);
+	//printf("\nmapdata ymax--++%zu", map_data->ymax);
+
+	if (check_walls(*map, map_data) == 0)
 		return (4);
-	if (check_collectible(&map_metadata, *map) == 0)
+	if (check_collectible(map_data, *map) == 0)
 		return (5);
-	if (check_exit(&map_metadata, *map) == 0)
+	if (check_exit(map_data, *map) == 0)
 		return (6);
-	if (check_player(&map_metadata, *map) == 0)
+	if (check_player(map_data, *map) == 0)
 		return (7);
 	return (1);
 }

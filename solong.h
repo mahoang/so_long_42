@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/04 16:11:32 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/05 15:59:20 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct s_map
 FUNCTION
 */
 size_t		ft_strlen(const char *s);
+t_map	init_struct();
 int is_error(char *str);
 int	ft_extension(char *c);
 void		*ft_memmove(void *dest, const void *src, size_t len);
@@ -95,9 +96,10 @@ int			has_ret(char *str);
 char		*get_save(char *save);
 char		*get_line(char *str);
 int			gnl(int fd, char **line);
-int	ft_parsing(char *file, char ***map);
+int	ft_parsing(char *file, char ***map, t_map *map_data);
 int	get_file(char *file, char ***map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void init_mlx();
+void init_mlx(char ***map, t_map *map_data, t_data *img);
 int hook(int key);
+int init_tiles(char **map, t_map mapdata, t_data mlx);
 #endif
