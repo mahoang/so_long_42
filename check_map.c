@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 13:40:57 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 16:38:13 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int check_rectangle(t_map *map_data,char **line)
 		if(map_data->xmax != ft_strlen(line[i]))
 			return (0);
 		i++;
-		//printf("--------------\n");
+		printf("--------------\n");
 	}
 	map_data->ymax = i;
-	//printf("******************\n");
+	printf("******************\n");
 	return (1);
 }
 
@@ -234,7 +234,8 @@ int testprint(char **map)
 	printf("adresse %p", map[i]);
 	return (0);
 }
-t_map	*init_struct()
+
+t_map	init_struct()
 {
 	t_map map_data;
 	map_data.ymax = 0;
@@ -249,24 +250,26 @@ t_map	*init_struct()
 	map_data.playery = 0;
 	return (map_data);
 }
-int	ft_parsing(char *file, char ***map, t_map *map_data)
-{
-	if (get_file(file, map) == -1)
-		return (-1);
-	//testprint(*map);
-	//printf("\nmapdata ymax--%zu", map_data.xmax);
-	if (check_rectangle(map_data, *map) == 0)
-		return (3);
-	//printf("\nmapdata xmax--++%zu", map_data->xmax);
-	//printf("\nmapdata ymax--++%zu", map_data->ymax);
 
-	if (check_walls(*map, map_data) == 0)
+int	ft_parsing(char *file, t_all *all)
+{
+	if (get_file(file, &all->map) == -1)
+		return (-1);
+	testprint(all->map);
+	//printf("\nmapdata ymax--%zu\n", all->map_data->xmax);
+	if (check_rectangle(all->map_data, all->map) == 0)
+		return (3);
+	printf("\nmapdata xmax--++%zu", all->map_data->xmax);
+	printf("\nmapdata ymax--++%zu", all->map_data->ymax);
+
+	if (check_walls(all->map, all->map_data) == 0)
 		return (4);
-	if (check_collectible(map_data, *map) == 0)
+	if (check_collectible(all->map_data, all->map) == 0)
 		return (5);
-	if (check_exit(map_data, *map) == 0)
+	if (check_exit(all->map_data, all->map) == 0)
 		return (6);
-	if (check_player(map_data, *map) == 0)
+	if (check_player(all->map_data, all->map) == 0)
 		return (7);
+	printf("\ntest\n");
 	return (1);
 }

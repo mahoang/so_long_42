@@ -6,7 +6,7 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
-#    Updated: 2021/08/06 13:32:57 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/08/06 14:42:32 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ OPTION = -L ./mlx
 OBJ = $(SRC:.c=.o)
 
 CC = clang
-FLAGS = -Wall -Wextra -o3 #-Werror
+FLAGS = -Wall -Wextra -o3 -Werror
 
 all : $(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/06 14:25:04 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 17:02:20 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,15 +86,15 @@ typedef struct s_map
 typedef struct s_all
 {
 	t_map *map_data;
-	t_data *mlx;
-	char **map
+	t_data *mlx_data;
+	char **map;
 }			t_all;
 
 /*
 FUNCTION
 */
 size_t		ft_strlen(const char *s);
-t_map	*init_struct();
+t_map	init_struct();
 int is_error(char *str);
 int	ft_extension(char *c);
 void		*ft_memmove(void *dest, const void *src, size_t len);
@@ -103,10 +103,10 @@ int			has_ret(char *str);
 char		*get_save(char *save);
 char		*get_line(char *str);
 int			gnl(int fd, char **line);
-int	ft_parsing(char *file, char ***map, t_map *map_data);
+int	ft_parsing(char *file, t_all *all);
 int	get_file(char *file, char ***map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void init_mlx(char ***map, t_map *map_data, t_data *img);
-int hook(int key);
-int init_tiles(char **map, t_map mapdata, t_data mlx);
+void init_mlx(t_all *all);
+int hook(int key/*, t_all *all*/);
+int init_tiles(t_all *all);
 #endif
