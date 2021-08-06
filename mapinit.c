@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 16:42:39 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/05 18:03:15 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 12:32:20 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	pixel_put(t_data mlx, t_map mapdata, int i, int j, int colour)
 	}
 }
 
-
 int init_tiles(char **map, t_map mapdata, t_data mlx)
 {
 	size_t x;
@@ -47,22 +46,27 @@ int init_tiles(char **map, t_map mapdata, t_data mlx)
 	printf("\n-mapdata ymax%zu\n", mapdata.ymax);
 	while (x < mapdata.xmax)
 	{
+		while (y < mapdata.ymax)
+		{
+			if (map[y][x] == CHAR_WALL)
+				pixel_put(mlx,mapdata, x, y,WALL_COLOUR);
+			if (map[y][x] == CHAR_EMPTY)
+				pixel_put(mlx,mapdata,x, y, EMPTY_COLOUR);
+			if (map[y][x] == CHAR_PC)
+				pixel_put(mlx,mapdata,x, y, PC_COLOUR);
+			if (map[y][x] == CHAR_COLLECT)
+				pixel_put(mlx,mapdata,x, y, COLLECT_COLOUR);
+			if (map[y][x] == CHAR_EXIT)
+				pixel_put(mlx,mapdata,x, y, EXIT_COLOUR);
+			y++;
+			printf("\n y value %zu\n", y);
+		}
+		x++;
 		printf("\n x value %zu\n", x);
 
-			if (map[x][y] == CHAR_WALL)
-				pixel_put(mlx,mapdata, x, y,WALL_COLOUR);
-			/*if (map[x][y] == CHAR_EMPTY)
-				pixel_put(mlx,mapdata,x, y, EMPTY_COLOUR);
-			if (map[x][y] == CHAR_PC)
-				pixel_put(mlx,mapdata,x, y, PC_COLOUR);
-			if (map[x][y] == CHAR_COLLECT)
-				pixel_put(mlx,mapdata,x, y, COLLECT_COLOUR);
-			if (map[x][y] == CHAR_EXIT)
-				pixel_put(mlx,mapdata,x, y, EXIT_COLOUR);*/
-		x++;
 		y = 0;
 	}
-	printf("\ntest E\n");
+	printf("\ntestE\n");
 
 	return (1);
 }
