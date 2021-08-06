@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/05 16:09:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 13:40:57 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,7 @@ int testprint(char **map)
 	printf("adresse %p", map[i]);
 	return (0);
 }
-t_map	init_struct()
+t_map	*init_struct()
 {
 	t_map map_data;
 	map_data.ymax = 0;

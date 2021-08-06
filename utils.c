@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:59 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/05 17:27:37 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 12:31:38 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int init_tiles(char **map, t_map mapdata, t_data mlx)
 
 /*
 
+
 int init_tiles(char **map, t_map mapdata, t_data mlx)
 {
 	size_t x;
@@ -92,13 +93,15 @@ int init_tiles(char **map, t_map mapdata, t_data mlx)
 	y = 0;
 	printf("\n-mapdata xmax%zu\n", mapdata.xmax);
 	printf("\n-mapdata ymax%zu\n", mapdata.ymax);
+	//if (map[4][10] == CHAR_WALL)
+	//	pixel_put(mlx,mapdata, 10, 4,WALL_COLOUR);
 	while (x < mapdata.xmax)
 	{
-		printf("\n x value %zu\n", x);
-
-			if (map[x][y] == CHAR_WALL)
+			//printf("\n x value %zu\n", x);
+			if (map[y][x] == CHAR_WALL)
+				printf("\n x value %zu\n", x);
 				pixel_put(mlx,mapdata, x, y,WALL_COLOUR);
-			if (map[x][y] == CHAR_EMPTY)
+			/*if (map[x][y] == CHAR_EMPTY)
 				pixel_put(mlx,mapdata,x, y, EMPTY_COLOUR);
 			if (map[x][y] == CHAR_PC)
 				pixel_put(mlx,mapdata,x, y, PC_COLOUR);
@@ -107,9 +110,8 @@ int init_tiles(char **map, t_map mapdata, t_data mlx)
 			if (map[x][y] == CHAR_EXIT)
 				pixel_put(mlx,mapdata,x, y, EXIT_COLOUR);
 		x++;
-		y = 0;
 	}
-	printf("\ntestE\n");
+	printf("\ntest E\n");
 
 	return (1);
 }

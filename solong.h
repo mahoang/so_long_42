@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/05 15:59:20 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 14:25:04 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ KEY
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
-# define KEY_ARROW_TOP 65362
-# define KEY_ARROW_LEFT 65361
-# define KEY_ARROW_BOT 65364
-# define KEY_ARROW_RIGHT 65363
+# define KEY_ARR_UP 65362
+# define KEY_ARR_L 65361
+# define KEY_ARR_D 65364
+# define KEY_ARR_R 65363
 /*
 DEFINE
 */
@@ -83,11 +83,18 @@ typedef struct s_map
 	int		playery;
 }				t_map;
 
+typedef struct s_all
+{
+	t_map *map_data;
+	t_data *mlx;
+	char **map
+}			t_all;
+
 /*
 FUNCTION
 */
 size_t		ft_strlen(const char *s);
-t_map	init_struct();
+t_map	*init_struct();
 int is_error(char *str);
 int	ft_extension(char *c);
 void		*ft_memmove(void *dest, const void *src, size_t len);

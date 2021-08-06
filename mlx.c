@@ -6,18 +6,26 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/05 17:38:01 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 13:42:33 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int hook(int key)
+int hook(int key, t_all *all)
 {
-	if (key ==KEY_ESC)
+	if (key == KEY_ESC)
 	{
 		exit(0);
 	}
+	/*if (key == KEY_Z || KEY_ARR_UP)
+		move(KEY_ARR_UP, all);
+	if (key == KEY_S || KEY_ARR_D)
+		move(KEY_ARR_D);
+	if (key == KEY_Q || KEY_ARR_L)
+		move(KEY_ARR_L);
+	if (key == KEY_D || KEY_ARR_R)
+		move(KEY_ARR_R);*/
 	return (key);
 }
 
@@ -43,19 +51,8 @@ void init_mlx(char ***map, t_map *map_data, t_data *img)
 	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->line_len,
 								&img->endian);
 	init_tiles(*map, *map_data, *img);
-	/*int i = 0;
-	int j = 0;
-	while (i < 100)
-	{
-		while (j < 100)
-		{
-			my_mlx_pixel_put(&img, i, j, 0x002c5160);
-			j++;
-		}
-		i++;
-		j=0;
-	}*/
 	mlx_put_image_to_window(mlx, mlx_win, img->img, 0, 0);
-	mlx_key_hook(mlx_win, hook, &img);
+	//mlx_key_hook(mlx_win, hook, &img);
+	mlx_key_hook(mlx_win, hook, all); // t_all *all;
 	mlx_loop(mlx);
 }
