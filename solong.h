@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/06 17:02:20 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/07 14:27:03 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct s_map
 	char		*multicolly;
 	int		exitx;
 	int		exity;
-	int		playerx;
-	int		playery;
+	size_t		playerx;
+	size_t		playery;
 }				t_map;
 
 typedef struct s_all
@@ -88,6 +88,7 @@ typedef struct s_all
 	t_map *map_data;
 	t_data *mlx_data;
 	char **map;
+	char	*type;
 }			t_all;
 
 /*
@@ -107,6 +108,7 @@ int	ft_parsing(char *file, t_all *all);
 int	get_file(char *file, char ***map);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void init_mlx(t_all *all);
-int hook(int key/*, t_all *all*/);
+int hook(int key, t_all *all);
 int init_tiles(t_all *all);
+void move(int key, t_all *all);
 #endif

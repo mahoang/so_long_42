@@ -6,26 +6,26 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 17:03:45 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/07 14:32:53 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int hook(int key/*, t_all *all*/)
+int hook(int key, t_all *all)
 {
 	if (key == KEY_ESC)
 	{
 		exit(0);
 	}
-	/*if (key == (KEY_Z || KEY_ARR_UP))
-		exit(0);
-	if (key == KEY_S || KEY_ARR_D)
-		move(KEY_ARR_D);
-	if (key == KEY_Q || KEY_ARR_L)
-		move(KEY_ARR_L);
-	if (key == KEY_D || KEY_ARR_R)
-		move(KEY_ARR_R);*/
+	if (key == (KEY_Z || key == KEY_ARR_UP))
+		move(KEY_ARR_UP, all);
+	if (key == KEY_S || key == KEY_ARR_D)
+		move(KEY_ARR_D, all);
+	if (key == KEY_Q || key == KEY_ARR_L)
+		move(KEY_ARR_L, all);
+	if (key == KEY_D || key == KEY_ARR_R)
+		move(KEY_ARR_R, all);
 	return (key);
 }
 
@@ -44,19 +44,23 @@ void init_mlx(t_all *all)
 	t_data	mlx_data;
 
 	all->mlx_data = &mlx_data;
-	printf("\n-123mapdata ymax%zu\n", all->map_data->ymax);
-	printf("\n-123mapdata xmax%zu\n", all->map_data->xmax);
+	//printf("\n-123mapdata ymax%zu\n", all->map_data->ymax);
+	//printf("\n-123mapdata xmax%zu\n", all->map_data->xmax);
+	//printf("position : [%zu, %zu]\n", all->map_data->playerx, all->map_data->playery);
+
 	mlx = mlx_init();
 
 	mlx_win = mlx_new_window(mlx, S_SCREEN_X, S_SCREEN_Y, WIN_NAME);
-	printf("\ntest B\n");
+	//printf("\ntest B\n");
 	all->mlx_data->img = mlx_new_image(mlx, S_SCREEN_X, S_SCREEN_Y);
-	printf("\ntest C\n");
+	//printf("\ntest C\n");
 	all->mlx_data->addr = mlx_get_data_addr(all->mlx_data->img, &all->mlx_data->bpp, &all->mlx_data->line_len,
 								&all->mlx_data->endian);
-	init_tiles(all);
-	printf("\ntest A\n");
-	mlx_put_image_to_window(mlx, mlx_win, all->mlx_data->img, 0, 0);
+	//printf("\ntest A\n");
 	mlx_key_hook(mlx_win, hook, all);
+
+	init_tiles(all);
+	mlx_put_image_to_window(mlx, mlx_win, all->mlx_data->img, 0, 0);
+
 	mlx_loop(mlx);
 }

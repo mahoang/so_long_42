@@ -6,20 +6,20 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
-#    Updated: 2021/08/06 14:42:32 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/08/06 17:14:10 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 HEADER = solong.h
-SRC = check_map.c get_file.c utils.c mlx.c mapinit.c main.c #move.c
+SRC = check_map.c get_file.c utils.c mlx.c mapinit.c main.c move.c
 LIB = -lmlx_Linux -lmlx -lXext -lm -lX11 -lbsd
 INC = -I . -I ./mlx -I ./includes
 OPTION = -L ./mlx
 OBJ = $(SRC:.c=.o)
 
 CC = clang
-FLAGS = -Wall -Wextra -o3 -Werror
+FLAGS = -Wall -Wextra -o3 #-Werror
 
 all : $(NAME)
 

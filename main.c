@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 16:38:59 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 17:39:42 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int ac, char *av[])
 
 	map_data = init_struct();
 	all.map_data = &map_data;
-	printf("\n\nmapdata xmax--++%zu", all.map_data->xmax);
+	//printf("\n\nmapdata xmax--++%zu", all.map_data->xmax);
 
 	if (ac != 2)
 		return (is_error("wrong number of arguments"));

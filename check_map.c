@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 16:38:13 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/06 17:40:41 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,10 @@ int check_rectangle(t_map *map_data,char **line)
 		if(map_data->xmax != ft_strlen(line[i]))
 			return (0);
 		i++;
-		printf("--------------\n");
+		//printf("--------------\n");
 	}
 	map_data->ymax = i;
-	printf("******************\n");
+	//printf("******************\n");
 	return (1);
 }
 
@@ -203,6 +203,8 @@ int check_player(t_map *map,char **line)
 			{
 				map->playerx = j;
 				map->playery = i;
+				printf("\nposition : [%zu, %zu]\n", map->playerx, map->playery);
+
 				return (1);
 			}
 			j++;
@@ -210,7 +212,6 @@ int check_player(t_map *map,char **line)
 		j = 1;
 		i++;
 	}
-	//printf("\n-------\n");
 	return (0);
 }
 
