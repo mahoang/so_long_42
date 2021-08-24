@@ -6,11 +6,19 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 16:42:39 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 17:07:50 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:23:45 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
+	*(unsigned int*)dst = color;
+}
 
 void	pixel_put(t_all *all, int i, int j, int colour)
 {
@@ -18,6 +26,7 @@ void	pixel_put(t_all *all, int i, int j, int colour)
 	int	y;
 	int	ts_x;
 	int	ts_y;
+	//printf("\ntest G\n");
 
 	x = 0;
 	y = 0;

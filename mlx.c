@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/07 14:32:53 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:23:05 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int hook(int key, t_all *all)
 {
+	//init_tiles(all);
 	if (key == KEY_ESC)
 	{
 		exit(0);
@@ -26,15 +27,8 @@ int hook(int key, t_all *all)
 		move(KEY_ARR_L, all);
 	if (key == KEY_D || key == KEY_ARR_R)
 		move(KEY_ARR_R, all);
+	//mlx_put_image_to_window(mlx, mlx_win, all->mlx_data->img, 0, 0);
 	return (key);
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(unsigned int*)dst = color;
 }
 
 void init_mlx(t_all *all)
@@ -56,11 +50,21 @@ void init_mlx(t_all *all)
 	//printf("\ntest C\n");
 	all->mlx_data->addr = mlx_get_data_addr(all->mlx_data->img, &all->mlx_data->bpp, &all->mlx_data->line_len,
 								&all->mlx_data->endian);
-	//printf("\ntest A\n");
+	printf("\ntest A\n");
+	mlx_do_sync(mlx);
 	mlx_key_hook(mlx_win, hook, all);
+	printf("\ntest E\n");
 
 	init_tiles(all);
+	printf("\ntest F\n");
+
 	mlx_put_image_to_window(mlx, mlx_win, all->mlx_data->img, 0, 0);
+	//mlx_loop_hook(mlx,hook, all); #care not working
+	//init_tiles(all);
+	printf("\ntest D\n");
 
 	mlx_loop(mlx);
 }
+
+//faire une fonction qui va dessiner 'draw'? le mettre dans mlx_loop_hook
+//mettre mlx_put_image_to_window dans 'draw'?

@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 17:39:42 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:14:10 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char *av[])
 		return (is_error("map couldn't open"));
 	ret = ft_parsing(av[1], &all);
 	printf("\nreturn %i\n",ret);
-	printf("\n-mapdata ymax--++%zu", all.map_data->ymax);
+	//printf("\n-mapdata ymax--++%zu", all.map_data->ymax);
 	close(fd);
 	init_mlx(&all);
 }

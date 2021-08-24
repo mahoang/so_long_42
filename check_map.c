@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 17:40:41 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/23 16:13:52 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,7 +203,7 @@ int check_player(t_map *map,char **line)
 			{
 				map->playerx = j;
 				map->playery = i;
-				printf("\nposition : [%zu, %zu]\n", map->playerx, map->playery);
+				//printf("\nposition : [%zu, %zu]\n", map->playerx, map->playery);
 
 				return (1);
 			}
@@ -256,12 +256,12 @@ int	ft_parsing(char *file, t_all *all)
 {
 	if (get_file(file, &all->map) == -1)
 		return (-1);
-	testprint(all->map);
+	//testprint(all->map);
 	//printf("\nmapdata ymax--%zu\n", all->map_data->xmax);
 	if (check_rectangle(all->map_data, all->map) == 0)
 		return (3);
-	printf("\nmapdata xmax--++%zu", all->map_data->xmax);
-	printf("\nmapdata ymax--++%zu", all->map_data->ymax);
+	//printf("\nmapdata xmax--++%zu", all->map_data->xmax);
+	//printf("\nmapdata ymax--++%zu", all->map_data->ymax);
 
 	if (check_walls(all->map, all->map_data) == 0)
 		return (4);
