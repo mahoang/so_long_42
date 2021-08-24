@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 15:19:14 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:41:19 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int hook(int key, t_all *all)
 
 	if (key == KEY_ESC)
 		exit(0);
-	if (key == (KEY_Z || key == KEY_ARR_UP))
+	if (key == KEY_Z || key == KEY_ARR_UP)
 		move(KEY_Z, all);
 	if (key == KEY_S || key == KEY_ARR_D)
 		move(KEY_ARR_D, all);
@@ -81,13 +81,13 @@ void init_mlx(t_all *all)
 	//mlx_do_sync(all->win->mlx);
 	mlx_hook(all->win->mlx_win, 33, 1L << 17, exit_hook, all);
 	mlx_hook(all->win->mlx_win, 2, 1L << 0, hook, all);
-	printf("\ntest E\n");
+	//printf("\ntest E\n");
 
 	mlx_loop_hook(all->win->mlx, main_loop, all); //utiliser
-	printf("\ntest F\n");
+	//printf("\ntest F\n");
 
 	mlx_loop(all->win->mlx);
-	printf("\ntest G\n");
+	//printf("\ntest G\n");
 
 	//mlx_key_hook(all->win->mlx_win, hook, all); //pas utiliser
 
