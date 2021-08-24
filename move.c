@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/06 12:54:41 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 10:59:42 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:22:29 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,29 @@
 */
 char movetotarget(int key, t_all *all)
 {
-	if ((key == KEY_ARR_UP && all->map_data->playery - 1 < 0)
+	if ((key == KEY_ARR_UP && all->map_data->playery - 1 < 1)
 		|| (key == KEY_ARR_D && all->map_data->playery + 1 > all->map_data->ymax - 1)
-		|| (key == KEY_ARR_L && all->map_data->playerx - 1 < 0)
+		|| (key == KEY_ARR_L && all->map_data->playerx - 1 < 1)
 		|| (key == KEY_ARR_R && all->map_data->playerx + 1 > all->map_data->xmax - 1))
 		return (-1);
+	printf("player value %c\n", all->map[all->map_data->playery][all->map_data->playerx]);
 	if (key == KEY_ARR_UP)
 	{
 		//printf("\nupkey\n");
 		return (all->map[all->map_data->playery -1][all->map_data->playerx]);
-		printf("upkey player value %c", all->map[all->map_data->playery -1][all->map_data->playerx]);
+
+//return (*all->map[all->map_data->playery -1]);
 	}
 	else if (key == KEY_ARR_D)
+	{
+		//printf("\ndownkey\n");
 		return (all->map[all->map_data->playery +1][all->map_data->playerx]);
+	}
 	else if (key == KEY_ARR_L)
+	{
+		//printf("\nleftkey\n");
 		return (all->map[all->map_data->playerx][all->map_data->playery - 1]);
+	}
 	else if (key == KEY_ARR_R)
 		return (all->map[all->map_data->playerx][all->map_data->playery + 1]);
 	return (-1);
@@ -67,13 +75,13 @@ void	move(int key, t_all *all)
 {
 	//printf("position : [%zu, %zu]\n", all->map_data->playerx, all->map_data->playery);
 	all->type = movetotarget(key, all);
-	printf("all type %c", all->type);
+	printf("all->type %c\n", all->type);
 	if (all->type == -1)
 		return;
-	/*else if (all->type == CHAR_WALL)
+	else if (all->type == CHAR_WALL)
 		return;
 	else if (all->type == CHAR_PC)
-		printf("tarace");*/
+		printf("tarace");
 	printf("\nmovetotype %c\n", all->type);
 	effectivemove(key, all);
 }

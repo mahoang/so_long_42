@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/24 10:58:46 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:09:18 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ KEY
 # define KEY_ARR_UP 126
 //# define KEY_ARR_UP 65362
 # define KEY_ARR_L 65361
-//# define KEY_ARR_D 65364
-# define KEY_ARR_D 125
+# define KEY_ARR_D 65364
+//# define KEY_ARR_D 125
 # define KEY_ARR_R 65363
 /*
 DEFINE

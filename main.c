@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 10:47:38 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:11:17 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 **TODO compteur de deplacement dans le shell
 **TODO compteur collectible
 **TODO sortie
+**TODO up/down key not working as intended
 */
 
 int	main(int ac, char *av[])
