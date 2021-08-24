@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/23 16:13:52 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 14:46:04 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -203,6 +203,7 @@ int check_player(t_map *map,char **line)
 			{
 				map->playerx = j;
 				map->playery = i;
+				line[i][j] = CHAR_EMPTY;
 				//printf("\nposition : [%zu, %zu]\n", map->playerx, map->playery);
 
 				return (1);

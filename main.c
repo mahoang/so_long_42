@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 11:11:17 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 11:58:31 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 **TODO compteur collectible
 **TODO sortie
 **TODO up/down key not working as intended
+**TODO exit avec la croix en haut a droite
 */
 
 int	main(int ac, char *av[])

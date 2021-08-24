@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 16:42:39 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/23 16:23:45 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 14:53:24 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,26 @@ int	init_tiles(t_all *all)
 
 	x = 0;
 	y = 0;
+	//printf("player x %zu | player y %zu\n", all->map_data->playerx, all->map_data->playery);
 	while (x < all->map_data->xmax)
 	{
 		while (y < all->map_data->ymax)
 		{
 			if (all->map[y][x] == CHAR_WALL)
 				pixel_put(all, x, y, WALL_COLOUR);
-			if (all->map[y][x] == CHAR_EMPTY)
+			if ((all->map[y][x] == CHAR_EMPTY)
+				|| (all->map[y][x] == CHAR_EXIT)
+				|| (all->map[y][x] == CHAR_COLLECT))
 				pixel_put(all, x, y, EMPTY_COLOUR);
-			if (all->map[y][x] == CHAR_PC)
+			if ((all->map_data->playery == y) &&
+				(all->map_data->playerx == x))
+				pixel_put(all, x, y, PC_COLOUR);
+			/*if (all->map[y][x] == CHAR_PC)
 				pixel_put(all, x, y, PC_COLOUR);
 			if (all->map[y][x] == CHAR_COLLECT)
 				pixel_put (all, x, y, COLLECT_COLOUR);
 			if (all->map[y][x] == CHAR_EXIT)
-				pixel_put(all, x, y, EXIT_COLOUR);
+				pixel_put(all, x, y, EXIT_COLOUR);*/
 			y++;
 		}
 		x++;

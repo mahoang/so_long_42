@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/24 11:09:18 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 15:18:40 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ KEY
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
-# define KEY_ARR_UP 126
+# define KEY_ARR_UP 101
 //# define KEY_ARR_UP 65362
 # define KEY_ARR_L 65361
 # define KEY_ARR_D 65364
@@ -71,12 +71,12 @@ typedef struct	s_data
 	int		endian;
 }				t_data;
 
-typedef struct s_mlx
+typedef struct s_win
 {
 	/* data */
 	void *mlx;
 	void	*mlx_win;
-}		t_mlx;
+}		t_win;
 
 /*struct check map*/
 typedef struct s_map
@@ -97,9 +97,10 @@ typedef struct s_all
 {
 	t_map *map_data;
 	t_data *mlx_data;
-	t_mlx *MLX;
+	t_win *win;
 	char **map;
 	char	type;
+	int		countM;
 }			t_all;
 
 /*
