@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/23 16:19:31 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/24 10:58:46 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ typedef struct s_all
 	t_data *mlx_data;
 	t_mlx *MLX;
 	char **map;
-	char	*type;
+	char	type;
 }			t_all;
 
 /*
