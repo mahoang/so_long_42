@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:59 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/06 12:31:38 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 23:26:43 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,82 +37,44 @@ int is_error(char *str)
 	printf("Error\n%s\n", str);
 	exit(-1);
 }
-
-
 /*
-int init_tiles(char **map, t_map mapdata, t_data mlx)
+int testprint(char **map)
 {
-	size_t x;
-	size_t y;
+	int i = 0;
+	int j = 0;
 
-	x = 0;
-	y = 0;
-	printf("\n-mapdata xmax%zu\n", mapdata.xmax);
-	printf("\n-mapdata ymax%zu\n", mapdata.ymax);
-	while (x < mapdata.xmax)
+	while (map[i])
 	{
-		while (y < mapdata.ymax)
+		while (map[i][j])
 		{
-			if (map[x][y] == CHAR_WALL)
-				pixel_put(mlx,mapdata, x, y,WALL_COLOUR);
-			if (map[x][y] == CHAR_EMPTY)
-				pixel_put(mlx,mapdata,x, y, EMPTY_COLOUR);
-			if (map[x][y] == CHAR_PC)
-				pixel_put(mlx,mapdata,x, y, PC_COLOUR);
-			if (map[x][y] == CHAR_COLLECT)
-				pixel_put(mlx,mapdata,x, y, COLLECT_COLOUR);
-			if (map[x][y] == CHAR_EXIT)
-				pixel_put(mlx,mapdata,x, y, EXIT_COLOUR);
-			y++;
-			printf("\n y value %zu\n", y);
+			printf("%c", map[i][j]);
+			j++;
 		}
-		x++;
-		printf("\n x value %zu\n", x);
-
-		y = 0;
+		printf("\n");
+		j = 0;
+		i++;
 	}
-	printf("\ntestE\n");
-
-	return (1);
+	printf("\n");
+	//printf("adresse %p", map[i]);
+	return (0);
 }
-
-
-
 */
-
-
-/*
-
-
-int init_tiles(char **map, t_map mapdata, t_data mlx)
+int check_chara(char **map)
 {
-	size_t x;
-	size_t y;
+	int i = 0;
+	int j = 0;
 
-	x = 0;
-	y = 0;
-	printf("\n-mapdata xmax%zu\n", mapdata.xmax);
-	printf("\n-mapdata ymax%zu\n", mapdata.ymax);
-	//if (map[4][10] == CHAR_WALL)
-	//	pixel_put(mlx,mapdata, 10, 4,WALL_COLOUR);
-	while (x < mapdata.xmax)
+	while (map[i])
 	{
-			//printf("\n x value %zu\n", x);
-			if (map[y][x] == CHAR_WALL)
-				printf("\n x value %zu\n", x);
-				pixel_put(mlx,mapdata, x, y,WALL_COLOUR);
-			/*if (map[x][y] == CHAR_EMPTY)
-				pixel_put(mlx,mapdata,x, y, EMPTY_COLOUR);
-			if (map[x][y] == CHAR_PC)
-				pixel_put(mlx,mapdata,x, y, PC_COLOUR);
-			if (map[x][y] == CHAR_COLLECT)
-				pixel_put(mlx,mapdata,x, y, COLLECT_COLOUR);
-			if (map[x][y] == CHAR_EXIT)
-				pixel_put(mlx,mapdata,x, y, EXIT_COLOUR);
-		x++;
+		while (map[i][j])
+		{
+			if (map[i][j] != 'C' && map[i][j] != '1' && map[i][j] != '0'
+			&& map[i][j] != 'E' && map[i][j] != 'P')
+				return (-1);
+			j++;
+		}
+		j = 0;
+		i++;
 	}
-	printf("\ntest E\n");
-
-	return (1);
+	return (0);
 }
-*/

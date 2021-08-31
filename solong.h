@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/31 21:42:36 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 23:26:22 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ int hook(int key, t_all *all);
 int init_tiles(t_all *all);
 int	init_chara(t_all *all);
 void move(int key, t_all *all);
+int movecount(int key, t_all *all);
 
 int testprint(char **map);
 
