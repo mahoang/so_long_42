@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/31 23:26:22 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 23:31:54 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ DEFINE
 # define WALL_COLOUR 0x002c5160
 # define EMPTY_COLOUR 0x00c0bfbb
 # define PC_COLOUR 0x00d45b61
-# define COLLECT_COLOUR 0x00f0e4d2
+# define COLLECT_COLOUR 0xa12b8fa
 # define EXIT_COLOUR 0xa12b8a
 
 /*
