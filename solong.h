@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/31 23:31:54 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 00:55:53 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ KEY
 DEFINE
 */
 # define WIN_NAME "so_long"
-# define S_SCREEN_X 1080
-# define S_SCREEN_Y 720
+# define SSX 1080
+# define SSY 720
 
 # define CHAR_WALL '1'
 # define CHAR_EMPTY '0'
@@ -62,7 +62,7 @@ DEFINE
 STRUCTURE
 */
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	char	*addr;
@@ -73,32 +73,31 @@ typedef struct	s_data
 
 typedef struct s_win
 {
-	/* data */
-	void *mlx;
+	void	*mlx;
 	void	*mlx_win;
 }		t_win;
 
 /*struct check map*/
 typedef struct s_map
 {
-	size_t		ymax;//lines
-	size_t		xmax;//col_max
-	int		collectiblex;
-	int		collectibley;
+	size_t		ymax;
+	size_t		xmax;
+	int			collectiblex;
+	int			collectibley;
 	char		*multicollx;
 	char		*multicolly;
-	int		exitx;
-	int		exity;
+	int			exitx;
+	int			exity;
 	size_t		playerx;
 	size_t		playery;
 }				t_map;
 
 typedef struct s_all
 {
-	t_map *map_data;
-	t_data *mlx_data;
-	t_win *win;
-	char **map;
+	t_map	*map_data;
+	t_data	*mlx_dt;
+	t_win	*win;
+	char	**map;
 	char	type;
 	int		countM;
 }			t_all;
@@ -107,25 +106,28 @@ typedef struct s_all
 FUNCTION
 */
 size_t		ft_strlen(const char *s);
-t_map	init_struct();
-int is_error(char *str);
-int	ft_extension(char *c);
+t_map		init_struct(void);
+int			is_error(char *str);
+int			ft_extension(char *c);
 void		*ft_memmove(void *dest, const void *src, size_t len);
 char		*str_join(char const *s1, char const *s2);
 int			has_ret(char *str);
 char		*get_save(char *save);
 char		*get_line(char *str);
 int			gnl(int fd, char **line);
-int	ft_parsing(char *file, t_all *all);
-int	get_file(char *file, char ***map);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void init_mlx(t_all *all);
-int hook(int key, t_all *all);
-int init_tiles(t_all *all);
-int	init_chara(t_all *all);
-void move(int key, t_all *all);
-int movecount(int key, t_all *all);
-
-int testprint(char **map);
-
+int			ft_parsing(char *file, t_all *all);
+int			get_file(char *file, char ***map);
+void		my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void		init_mlx(t_all *all);
+int			hook(int key, t_all *all);
+int			init_tiles(t_all *all);
+int			init_chara(t_all *all);
+void		move(int key, t_all *all);
+int			movecount(int key, t_all *all);
+int			check_rectangle(t_map *map_data, char **line);
+int			check_walls(char **map, t_map *map_data, unsigned int i, unsigned int j);
+int			check_collectible( t_map *map, char **line);
+int			check_exit(t_map *map, char **line);
+int			check_player(t_map *map, char **line);
+int			testprint(char **map);
 #endif

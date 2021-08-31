@@ -6,11 +6,28 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/31 23:25:12 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 00:53:25 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
+
+int	ft_parsing(char *file, t_all *all)
+{
+	if (get_file(file, &all->map) == -1)
+		return (-1);
+	if (check_rectangle(all->map_data, all->map) == 0)
+		return (3);
+	if (check_walls(all->map, all->map_data, 0, 0) == 0)
+		return (4);
+	if (check_collectible(all->map_data, all->map) == 0)
+		return (5);
+	if (check_exit(all->map_data, all->map) == 0)
+		return (6);
+	if (check_player(all->map_data, all->map) == 0)
+		return (7);
+	return (1);
+}
 
 /*
 **TODO deplacement

@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:59 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/31 23:26:43 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 00:51:35 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,4 +77,19 @@ int check_chara(char **map)
 		i++;
 	}
 	return (0);
+}
+
+t_map	init_struct(void)
+{
+	t_map	map_data;
+
+	map_data.ymax = 0;
+	map_data.xmax = 0;
+	map_data.collectiblex = 0;
+	map_data.collectibley = 0;
+	map_data.exitx = 0;
+	map_data.exity = 0;
+	map_data.playerx = 0;
+	map_data.playery = 0;
+	return (map_data);
 }
