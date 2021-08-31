@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/01 00:53:25 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 01:09:13 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,21 @@ int	ft_parsing(char *file, t_all *all)
 {
 	if (get_file(file, &all->map) == -1)
 		return (-1);
+	if (check_chara(all->map) == -1)
+		return (is_error("invalid character in files"));
 	if (check_rectangle(all->map_data, all->map) == 0)
-		return (3);
+		return (is_error("invalid map shape"));
 	if (check_walls(all->map, all->map_data, 0, 0) == 0)
-		return (4);
+		return (is_error("map not enclosed by walls"));
 	if (check_collectible(all->map_data, all->map) == 0)
-		return (5);
+		return (is_error("map doesn't have any collectibles"));
 	if (check_exit(all->map_data, all->map) == 0)
-		return (6);
+		return (is_error("map doesn't have any exit"));
 	if (check_player(all->map_data, all->map) == 0)
-		return (7);
+		return (is_error("map doesn't have any character"));
 	return (1);
 }
 
-/*
-**TODO deplacement
-**TODO compteur de deplacement dans le shell
-**TODO compteur collectible
-**TODO sortie
-**TODO up/down key not working as intended
-*/
 int	main(int ac, char *av[])
 {
 	int		fd;

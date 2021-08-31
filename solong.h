@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/09/01 00:55:53 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 01:02:51 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,5 +129,6 @@ int			check_walls(char **map, t_map *map_data, unsigned int i, unsigned int j);
 int			check_collectible( t_map *map, char **line);
 int			check_exit(t_map *map, char **line);
 int			check_player(t_map *map, char **line);
+int			check_chara(char **map);
 int			testprint(char **map);
 #endif
