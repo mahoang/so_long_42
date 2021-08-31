@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:24:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/31 21:18:44 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:25:06 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,22 @@ int	is_valid(int key, t_all *all)
 
 void	move(int key, t_all *all)
 {
-		if (key == KEY_ARR_UP && is_valid(key, all))
-			all->map_data->playery -= 1;
-		else if (key == KEY_ARR_D && is_valid(key, all))
-			all->map_data->playery +=1;
-		else if (key == KEY_ARR_L && is_valid(key, all))
-			all->map_data->playerx -=1;
-		else if (key == KEY_ARR_R && is_valid(key, all))
-			all->map_data->playerx +=1;
-		if (all->map[all->map_data->playery][all->map_data->playerx] == 'C')
-		{
-			all->map_data->collectiblex--;
-			all->map[all->map_data->playery][all->map_data->playerx] = '0';
-		}
-
+	if (key == KEY_ARR_UP && is_valid(key, all))
+		all->map_data->playery -= 1;
+	else if (key == KEY_ARR_D && is_valid(key, all))
+		all->map_data->playery +=1;
+	else if (key == KEY_ARR_L && is_valid(key, all))
+		all->map_data->playerx -=1;
+	else if (key == KEY_ARR_R && is_valid(key, all))
+		all->map_data->playerx +=1;
+	if (all->map[all->map_data->playery][all->map_data->playerx] == 'C')
+	{
+		all->map_data->collectiblex--;
+		all->map[all->map_data->playery][all->map_data->playerx] = '0';
+	}
+	if ((all->map[all->map_data->playery][all->map_data->playerx] == 'E')
+		&& all->map_data->collectiblex == 0)
+	{
+		printf("\nnice\n");
+	}
 }

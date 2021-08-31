@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/31 21:19:00 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:27:14 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main_loop(void *param)
 int movecount(int key, t_all *all)
 {
 
-	if ((key == KEY_Z || key == KEY_ARR_UP)
+	if ((key == KEY_W || key == KEY_ARR_UP)
 	|| (key == KEY_S || key == KEY_ARR_D)
 	|| (key == KEY_Q || key == KEY_ARR_L)
 	|| (key == KEY_D || key == KEY_ARR_R))
@@ -46,8 +46,8 @@ int hook(int key, t_all *all)
 
 	if (key == KEY_ESC)
 		exit(0);
-	if (key == KEY_Z || key == KEY_ARR_UP)
-		move(KEY_Z, all);
+	if (key == KEY_W || key == KEY_ARR_UP)
+		move(KEY_W, all);
 	if (key == KEY_S || key == KEY_ARR_D)
 		move(KEY_ARR_D, all);
 	if (key == KEY_Q || key == KEY_ARR_L)
