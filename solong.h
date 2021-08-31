@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/08/24 15:18:40 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:49:17 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ KEY
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
-# define KEY_ARR_UP 101
-//# define KEY_ARR_UP 65362
+//# define KEY_ARR_UP 101
+# define KEY_ARR_UP 65362
 # define KEY_ARR_L 65361
-# define KEY_ARR_D 65364
-//# define KEY_ARR_D 125
+//# define KEY_ARR_D 65364
+# define KEY_ARR_D 125
 # define KEY_ARR_R 65363
 /*
 DEFINE
@@ -122,5 +122,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void init_mlx(t_all *all);
 int hook(int key, t_all *all);
 int init_tiles(t_all *all);
+int	init_chara(t_all *all);
 void move(int key, t_all *all);
+
+int testprint(char **map);
+
 #endif

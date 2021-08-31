@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 15:41:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 19:18:16 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	main_loop(void *param)
 
 	all = param;
 	init_tiles(all);
+	init_chara(all);
 	mlx_put_image_to_window(all->win->mlx, all->win->mlx_win, all->mlx_data->img, 0, 0);
 	return (1);
 }
@@ -53,8 +54,8 @@ int hook(int key, t_all *all)
 		move(KEY_ARR_L, all);
 	if (key == KEY_D || key == KEY_ARR_R)
 		move(KEY_ARR_R, all);
-	movecount(key, all);
-	printf("move counter is %i\n", all->countM);
+	//movecount(key, all);
+	// printf("move counter is %i\n", all->countM);
 	return (key);
 }
 
@@ -75,9 +76,8 @@ void init_mlx(t_all *all)
 	//printf("\ntest C\n");
 	all->mlx_data->addr = mlx_get_data_addr(all->mlx_data->img, &all->mlx_data->bpp, &all->mlx_data->line_len,
 								&all->mlx_data->endian);
-	init_tiles(all);
 	mlx_put_image_to_window(all->win->mlx, all->win->mlx_win, all->mlx_data->img, 0, 0);
-	printf("\ntest A\n");
+	//printf("\ntest A\n");
 	//mlx_do_sync(all->win->mlx);
 	mlx_hook(all->win->mlx_win, 33, 1L << 17, exit_hook, all);
 	mlx_hook(all->win->mlx_win, 2, 1L << 0, hook, all);

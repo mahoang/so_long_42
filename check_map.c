@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 14:46:04 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/31 18:26:08 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,15 @@ int check_collectible( t_map *map, char **line)
 		{
 			if (line[i][j] == CHAR_COLLECT)
 			{
-				map->collectiblex = j;
-				map->collectibley = i;
-				return (1);
+				map->collectiblex++;
 			}
 			j++;
 		}
 		j = 1;
 		i++;
 	}
+	if (map->collectiblex > 0)
+		return (1);
 	return (0);
 }
 /*
@@ -233,7 +233,8 @@ int testprint(char **map)
 		j = 0;
 		i++;
 	}
-	printf("adresse %p", map[i]);
+	printf("\n");
+	//printf("adresse %p", map[i]);
 	return (0);
 }
 
@@ -272,6 +273,6 @@ int	ft_parsing(char *file, t_all *all)
 		return (6);
 	if (check_player(all->map_data, all->map) == 0)
 		return (7);
-	printf("\ntest\n");
+	//printf("\ntest\n");
 	return (1);
 }

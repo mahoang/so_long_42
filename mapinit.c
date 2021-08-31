@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/04 16:42:39 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/24 14:53:24 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/08/26 20:53:30 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,33 @@ int	init_tiles(t_all *all)
 				pixel_put (all, x, y, COLLECT_COLOUR);
 			if (all->map[y][x] == CHAR_EXIT)
 				pixel_put(all, x, y, EXIT_COLOUR);*/
+			y++;
+		}
+		x++;
+		y = 0;
+	}
+	return (1);
+}
+
+int	init_chara(t_all *all)
+{
+	size_t	x;
+	size_t	y;
+
+	x = 0;
+	y = 0;
+	//printf("player x %zu | player y %zu\n", all->map_data->playerx, all->map_data->playery);
+	while (x < all->map_data->xmax)
+	{
+		while (y < all->map_data->ymax)
+		{
+			if (all->map[y][x] == CHAR_COLLECT)
+				pixel_put (all, x, y, COLLECT_COLOUR);
+			if (all->map[y][x] == CHAR_EXIT)
+				pixel_put(all, x, y, EXIT_COLOUR);
+			if ((all->map_data->playery == y) &&
+				(all->map_data->playerx == x))
+				pixel_put(all, x, y, PC_COLOUR);
 			y++;
 		}
 		x++;
