@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/09/01 01:02:51 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:10:10 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,8 @@ FUNCTION
 */
 size_t		ft_strlen(const char *s);
 t_map		init_struct(void);
-int			is_error(char *str);
+int			is_error(char *str, t_all *all);
+int			is_error_gnl(char *str);
 int			ft_extension(char *c);
 void		*ft_memmove(void *dest, const void *src, size_t len);
 char		*str_join(char const *s1, char const *s2);
@@ -131,4 +132,6 @@ int			check_exit(t_map *map, char **line);
 int			check_player(t_map *map, char **line);
 int			check_chara(char **map);
 int			testprint(char **map);
+void 		free_tab(char **map);
+
 #endif

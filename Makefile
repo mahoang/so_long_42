@@ -6,13 +6,13 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
-#    Updated: 2021/09/01 00:57:03 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/09/03 18:16:09 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 HEADER = solong.h
-SRC = check_map.c get_file.c utils.c mlx.c mapinit.c main.c move2.c
+SRC = check_map.c get_file.c utils.c mlx.c mapinit.c main.c move2.c utils2.c
 LIB = -lmlx_Linux -lmlx -lXext -lm -lX11 -lbsd
 INC = -I . -I ./mlx -I ./includes
 OPTION = -L ./mlx

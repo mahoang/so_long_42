@@ -6,14 +6,18 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/01 00:37:48 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:17:07 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "solong.h"
 
-int	exit_hook(void)
+int	exit_hook(t_all *all)
 {
+	mlx_destroy_image(all->win->mlx, all->mlx_dt->img);
+	mlx_destroy_display(all->win->mlx);
+	mlx_destroy_window(all->win->mlx, all->win->mlx_win);
+	free_tab(all->map);
 	exit(0);
 	return (0);
 }

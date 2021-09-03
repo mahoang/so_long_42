@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:59 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/01 01:12:28 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/03 18:15:36 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,6 @@ int	ft_extension(char *c)
 		&& c[i - 2] == 'e' && c[i - 1] == 'r')
 		return (0);
 	return (1);
-}
-
-int	is_error(char *str)
-{
-	printf("Error\n%s\n", str);
-	exit(-1);
 }
 
 int	check_chara(char **map)
