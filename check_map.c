@@ -6,41 +6,35 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 16:47:02 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/08/05 16:09:19 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/01 00:54:43 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "solong.h"
+#include "solong.h"
 
 /*
 **check if map is rectangular
 **if rectangular return 1
 **if not return 0
 */
-int check_rectangle(t_map *map_data,char **line)
+int	check_rectangle(t_map *map_data, char **line)
 {
-	size_t i;
-	int j;
+	size_t	i;
+	int		j;
 
 	i = 1;
 	j = 0;
-
 	while (line[i][j])
 		j++;
 	map_data->xmax = j;
-	//printf("col max%zu\n", map_data->xmax);
 	j = 0;
 	while (line[i] != NULL)
 	{
-		//printf("i %zu\n", i);
-		//printf("strlen %zu\n", ft_strlen(line[i]));
-		if(map_data->xmax != ft_strlen(line[i]))
+		if (map_data->xmax != ft_strlen(line[i]))
 			return (0);
 		i++;
-		//printf("--------------\n");
 	}
 	map_data->ymax = i;
-	//printf("******************\n");
 	return (1);
 }
 
@@ -50,20 +44,15 @@ int check_rectangle(t_map *map_data,char **line)
 **return - if it's not
 ** in order West/South/East/North
 */
-int check_walls(char **map, t_map *map_data )
+int	check_walls(char **map, t_map *map_data, unsigned int i, unsigned int j)
 {
-	unsigned int i;
-	unsigned int j;
-
-	i = 0;
-	j = 0;
-	while (i < map_data->ymax -1)
+	while (i < map_data->ymax - 1)
 	{
 		if (map[i][j] != CHAR_WALL)
 			return (0);
 		i++;
 	}
-	while (j < map_data->xmax -1)
+	while (j < map_data->xmax - 1)
 	{
 		if (map[i][j] != CHAR_WALL)
 			return (0);
@@ -90,11 +79,10 @@ int check_walls(char **map, t_map *map_data )
 **return - if not
 ** TODO voir pour le cas ou il y a plusieurs collectibles
 */
-int check_collectible( t_map *map, char **line)
+int	check_collectible( t_map *map, char **line)
 {
-	int i;
-	int j;
-
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 1;
@@ -104,63 +92,27 @@ int check_collectible( t_map *map, char **line)
 		{
 			if (line[i][j] == CHAR_COLLECT)
 			{
-				map->collectiblex = j;
-				map->collectibley = i;
-				return (1);
+				map->collectiblex++;
 			}
 			j++;
 		}
 		j = 1;
 		i++;
 	}
+	if (map->collectiblex > 0)
+		return (1);
 	return (0);
 }
-/*
-int check_multi_collectible( t_map *map, char **line)
-{
-	int i;
-	int j;
-	int x;
-	int y;
 
-
-	i = 0;
-	j = 0;
-	x = 0;
-	y = 0;
-	printf("\n-----\n");
-	printf("%c coll", map->multicollx[0]);
-
-	while (line[i])
-	{
-		while (line[i][j])
-		{
-			if (line[i][j] == 'C')
-			{
-				map->multicollx[x] = j;
-				map->multicolly[y] = i;
-				x++;
-				y++;
-				return (1);
-			}
-			j++;
-		}
-		j = 1;
-		i++;
-	}
-	printf("\n-----\n");
-	return (0);
-}
-*/
 /*
 **check if exit exist
 **return 1 and coordinate if do
 **return 0 if not
 */
-int check_exit(t_map *map,char **line)
+int	check_exit(t_map *map, char **line)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	j = 1;
@@ -182,16 +134,15 @@ int check_exit(t_map *map,char **line)
 	return (0);
 }
 
-
 /*
 **check if player exist
 **return 1 and coordinate if do
 **return 0 if not
 */
-int check_player(t_map *map,char **line)
+int	check_player(t_map *map, char **line)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -203,6 +154,7 @@ int check_player(t_map *map,char **line)
 			{
 				map->playerx = j;
 				map->playery = i;
+				line[i][j] = CHAR_EMPTY;
 				return (1);
 			}
 			j++;
@@ -210,63 +162,5 @@ int check_player(t_map *map,char **line)
 		j = 1;
 		i++;
 	}
-	//printf("\n-------\n");
 	return (0);
-}
-
-int testprint(char **map)
-{
-	int i = 0;
-	int j = 0;
-
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			printf("%c", map[i][j]);
-			j++;
-		}
-		//printf("adresse %p", map[i]);
-		printf("\n");
-		j = 0;
-		i++;
-	}
-	printf("adresse %p", map[i]);
-	return (0);
-}
-t_map	init_struct()
-{
-	t_map map_data;
-	map_data.ymax = 0;
-	map_data.xmax = 0;
-	map_data.collectiblex = 0;
-	map_data.collectibley = 0;
-	//map_data.multicollx = 0;
-	//map_data.multicolly = 0;
-	map_data.exitx = 0;
-	map_data.exity = 0;
-	map_data.playerx = 0;
-	map_data.playery = 0;
-	return (map_data);
-}
-int	ft_parsing(char *file, char ***map, t_map *map_data)
-{
-	if (get_file(file, map) == -1)
-		return (-1);
-	//testprint(*map);
-	//printf("\nmapdata ymax--%zu", map_data.xmax);
-	if (check_rectangle(map_data, *map) == 0)
-		return (3);
-	//printf("\nmapdata xmax--++%zu", map_data->xmax);
-	//printf("\nmapdata ymax--++%zu", map_data->ymax);
-
-	if (check_walls(*map, map_data) == 0)
-		return (4);
-	if (check_collectible(map_data, *map) == 0)
-		return (5);
-	if (check_exit(map_data, *map) == 0)
-		return (6);
-	if (check_player(map_data, *map) == 0)
-		return (7);
-	return (1);
 }
