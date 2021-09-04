@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/09/03 18:10:10 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/04 14:52:02 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,12 +126,13 @@ int			init_chara(t_all *all);
 void		move(int key, t_all *all);
 int			movecount(int key, t_all *all);
 int			check_rectangle(t_map *map_data, char **line);
-int			check_walls(char **map, t_map *map_data, unsigned int i, unsigned int j);
+int			check_walls(char **map, t_map *map_data, unsigned int i,
+				unsigned int j);
 int			check_collectible( t_map *map, char **line);
 int			check_exit(t_map *map, char **line);
 int			check_player(t_map *map, char **line);
 int			check_chara(char **map);
 int			testprint(char **map);
-void 		free_tab(char **map);
+void		free_tab(char **map);
 
 #endif

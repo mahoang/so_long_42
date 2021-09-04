@@ -6,7 +6,7 @@
 #    By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/02 14:50:31 by zephyrus          #+#    #+#              #
-#    Updated: 2021/09/03 18:16:09 by zephyrus         ###   ########.fr        #
+#    Updated: 2021/09/04 16:44:03 by zephyrus         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ OBJ = $(SRC:.c=.o)
 CC = clang
 FLAGS = -Wall -Wextra -o3 -Werror
 
-all : $(NAME)
+all : initmlx $(NAME)
 
 %.o : %.c
 	$(CC) $(FLAGS) -o $@ -c $< -I $(HEADER) -I/mlx
@@ -36,5 +36,11 @@ fclean :	clean
 	rm -rf $(NAME)
 
 re : fclean all
+
+initmlx :
+	@ make -C ./mlx
+
+norm :
+	@ norminette $(SRC) $(HEADER)
 
 .PHONY : clean fclean re all
