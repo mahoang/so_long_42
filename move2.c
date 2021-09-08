@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:24:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/01 01:01:02 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 11:16:03 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ void	move(int key, t_all *all)
 		if ((all->map[all->map_data->playery][all->map_data->playerx] == 'E')
 		&& all->map_data->collectiblex == 0)
 		{
-			exit(0);
+			printf("Gratz you finished it in %i\n", all->countM);
+			exit_hook(all);
 		}
 	}
 }
