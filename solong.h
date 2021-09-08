@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/10 10:50:18 by user42            #+#    #+#             */
-/*   Updated: 2021/09/04 14:52:02 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 11:35:32 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,6 @@ int			check_player(t_map *map, char **line);
 int			check_chara(char **map);
 int			testprint(char **map);
 void		free_tab(char **map);
+int			exit_hook(t_all *all);
 
 #endif

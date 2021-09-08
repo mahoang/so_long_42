@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/03 18:17:07 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/08 11:34:31 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	exit_hook(t_all *all)
 	mlx_destroy_display(all->win->mlx);
 	mlx_destroy_window(all->win->mlx, all->win->mlx_win);
 	free_tab(all->map);
+	free(all->win->mlx);
 	exit(0);
 	return (0);
 }
@@ -50,7 +51,7 @@ int	hook(int key, t_all *all)
 
 	info = all;
 	if (key == KEY_ESC)
-		exit(0);
+		exit_hook(all);
 	if (key == KEY_Z || key == KEY_ARR_UP)
 		move(KEY_ARR_UP, all);
 	if (key == KEY_S || key == KEY_ARR_D)
