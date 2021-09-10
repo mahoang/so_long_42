@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/03 18:26:58 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:24:24 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	main(int ac, char *av[])
 
 	map_data = init_struct();
 	all.map_data = &map_data;
-	all.countM = 0;
+	all.countm = 0;
 	if (ac != 2)
 		return (is_error("wrong number of arguments", &all));
 	if (ft_extension(av[1]))

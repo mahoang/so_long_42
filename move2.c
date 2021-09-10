@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:24:51 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/08 11:16:03 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:24:24 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	move(int key, t_all *all)
 		else if (key == KEY_ARR_R)
 			all->map_data->playerx++;
 		movecount(key, all);
-		printf("move counter is %i\n", all->countM);
+		printf("move counter is %i\n", all->countm);
 		if (all->map[all->map_data->playery][all->map_data->playerx] == 'C')
 		{
 			all->map_data->collectiblex--;
@@ -54,7 +54,7 @@ void	move(int key, t_all *all)
 		if ((all->map[all->map_data->playery][all->map_data->playerx] == 'E')
 		&& all->map_data->collectiblex == 0)
 		{
-			printf("Gratz you finished it in %i\n", all->countM);
+			printf("Gratz you finished it in %i\n", all->countm);
 			exit_hook(all);
 		}
 	}

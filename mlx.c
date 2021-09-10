@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/08 11:34:31 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/10 15:24:24 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	movecount(int key, t_all *all)
 		|| (key == KEY_S || key == KEY_ARR_D)
 		|| (key == KEY_Q || key == KEY_ARR_L)
 		|| (key == KEY_D || key == KEY_ARR_R))
-		all->countM++;
-	return (all->countM);
+		all->countm++;
+	return (all->countm);
 }
 
 int	hook(int key, t_all *all)
