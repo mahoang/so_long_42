@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/02 14:58:05 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 15:24:24 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/24 11:34:05 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 int	exit_hook(t_all *all)
 {
 	mlx_destroy_image(all->win->mlx, all->mlx_dt->img);
-	mlx_destroy_display(all->win->mlx);
 	mlx_destroy_window(all->win->mlx, all->win->mlx_win);
+	mlx_destroy_display(all->win->mlx);
 	free_tab(all->map);
 	free(all->win->mlx);
 	exit(0);
