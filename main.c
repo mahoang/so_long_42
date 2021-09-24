@@ -6,7 +6,7 @@
 /*   By: zephyrus <zephyrus@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/24 16:36:16 by zephyrus          #+#    #+#             */
-/*   Updated: 2021/09/10 15:24:24 by zephyrus         ###   ########.fr       */
+/*   Updated: 2021/09/24 01:49:27 by zephyrus         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	main(int ac, char *av[])
 	all.map_data = &map_data;
 	all.countm = 0;
 	if (ac != 2)
-		return (is_error("wrong number of arguments", &all));
+		return (is_error_gnl("wrong number of arguments"));
 	if (ft_extension(av[1]))
-		return (is_error("extension not valid", &all));
+		return (is_error_gnl("extension not valid"));
 	fd = open(av[1], O_RDONLY);
 	if (fd < 0)
 		return (is_error("map couldn't open", &all));
